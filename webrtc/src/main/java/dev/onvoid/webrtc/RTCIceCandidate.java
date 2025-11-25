@@ -37,9 +37,9 @@ public class RTCIceCandidate {
 	public final int sdpMLineIndex;
 
 	/**
-	 * SDP string representation of this candidate.
+	 * Candidate string representation of this candidate.
 	 */
-	public final String sdp;
+	public final String candidate;
 
 	/**
 	 * The URL of the ICE server which this candidate was gathered from.
@@ -52,11 +52,11 @@ public class RTCIceCandidate {
 	 *
 	 * @param sdpMid        The media stream "identification-tag"
 	 * @param sdpMLineIndex The index (starting at zero) of the media
-	 *                      description in the SDP.
-	 * @param sdp           SDP string representation of the candidate.
+	 *                      description in the Candidate.
+	 * @param candidate     Candidate string representation of the candidate.
 	 */
-	public RTCIceCandidate(String sdpMid, int sdpMLineIndex, String sdp) {
-		this(sdpMid, sdpMLineIndex, sdp, null);
+	public RTCIceCandidate(String sdpMid, int sdpMLineIndex, String candidate) {
+		this(sdpMid, sdpMLineIndex, candidate, null);
 	}
 
 	/**
@@ -65,21 +65,21 @@ public class RTCIceCandidate {
 	 * @param sdpMid        The media stream "identification-tag"
 	 * @param sdpMLineIndex The index (starting at zero) of the media
 	 *                      description in the SDP.
-	 * @param sdp           SDP string representation of the candidate.
+	 * @param candidate     Candidate string representation of the candidate.
 	 * @param serverUrl     The URL of the ICE server.
 	 */
-	public RTCIceCandidate(String sdpMid, int sdpMLineIndex, String sdp,
+	public RTCIceCandidate(String sdpMid, int sdpMLineIndex, String candidate,
 			String serverUrl) {
 		this.sdpMid = sdpMid;
 		this.sdpMLineIndex = sdpMLineIndex;
-		this.sdp = sdp;
+		this.candidate = candidate;
 		this.serverUrl = serverUrl;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%s@%d [sdpMid=%s, sdpMLineIndex=%s, sdp=%s, serverUrl=%s]",
+		return String.format("%s@%d [sdpMid=%s, sdpMLineIndex=%s, candidate=%s, serverUrl=%s]",
 						RTCIceCandidate.class.getSimpleName(), hashCode(),
-						sdpMid, sdpMLineIndex, sdp, serverUrl);
+						sdpMid, sdpMLineIndex, candidate, serverUrl);
 	}
 }
